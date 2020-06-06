@@ -61,18 +61,13 @@ gives a solution
 ```
 
 
-# Installation from PIP
-
-```
-pip install lemkelcp
-```
 
 # Installation from source
 
 
 
 ```
-git clone https://github.com/AndyLamperski/lemkelcp.git
+git clone https://github.com/pritam-dey3/lemkelcp.git
 cd lemkelcp
 python setupy.py install
 ```
