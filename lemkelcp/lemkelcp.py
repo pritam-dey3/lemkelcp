@@ -1,4 +1,6 @@
 import numpy as np
+from pprint import pprint
+import pandas as pd
 
 class lemketableau:
     def __init__(self,M,q,maxIter = 100):
@@ -22,12 +24,15 @@ class lemketableau:
         
         
     def lemkeAlgorithm(self):
+        pprint(self)
         initVal = self.initialize()
+        pprint(self)
         if not initVal:
             return np.zeros(self.n),0,'Solution Found'
         
         for k in range(self.maxIter):
             stepVal = self.step()
+            pprint(self)
             if self.Tind[0,-2] == self.Y:
                 # Solution Found
                 z = self.extractSolution()
@@ -60,7 +65,7 @@ class lemketableau:
                 if newRatio < minRatio:
                     ind = i
                     minRatio = newRatio
-                    
+        
         if minRatio < np.inf:
             self.clearDriverColumn(ind)
             self.pivot(ind)
@@ -151,13 +156,16 @@ class lemketableau:
         
     def indexedTableau(self):
         indstr = self.indexStringArray()
-        return np.vstack((indstr,self.T))
+        tab_df = pd.DataFrame(data=self.T, columns = indstr, index=indstr[0:4])
+        indstr = sorted([x for x in indstr if x not in ('y', 'q')]) + ['y', 'q']
+        tab_df = tab_df.reindex(indstr, axis=1)
+        return tab_df
     def __repr__(self):
         IT = self.indexedTableau()
         return IT.__repr__()
     def __str__(self):
         IT = self.indexedTableau()
-        return IT.__str__()
+        return IT.to_markdown()
     
 def lemkelcp(M,q,maxIter=100):
     """

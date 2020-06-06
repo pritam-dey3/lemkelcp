@@ -8,7 +8,7 @@ setup(
     description=("A Python implementation of Lemke's Algorithm for linear complementarity problems"),
     license="MIT",
     url="https://github.com/AndyLamperski/lemkelcp",
-    install_requires=['numpy'],
+    install_requires=['numpy', 'tabulate'],
     keywords="linear complementarity problem lcp optimization",
     packages=['lemkelcp'],
     classifiers=[
