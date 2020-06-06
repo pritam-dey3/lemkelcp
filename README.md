@@ -69,5 +69,5 @@ gives a solution
 ```
 git clone https://github.com/pritam-dey3/lemkelcp.git
 cd lemkelcp
-python setupy.py install
+python setup.py install
 ```
