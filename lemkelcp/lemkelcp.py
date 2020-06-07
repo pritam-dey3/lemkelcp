@@ -156,7 +156,7 @@ class lemketableau:
         
     def indexedTableau(self):
         indstr = self.indexStringArray()
-        tab_df = pd.DataFrame(data=self.T, columns = indstr, index=indstr[0:4])
+        tab_df = pd.DataFrame(data=self.T, columns = indstr, index=indstr[0:self.n])
         indstr = sorted([x for x in indstr if x not in ('y', 'q')]) + ['y', 'q']
         tab_df = tab_df.reindex(indstr, axis=1)
         return tab_df
